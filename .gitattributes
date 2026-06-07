@@ -14,6 +14,6 @@ __pycache__/** linguist-vendored
 *.toml linguist-documentation
 *.xml linguist-documentation
 *.html linguist-documentation
-*.TeX linguist-documentation
+*.tex linguist-documentation
 
 *.py linguist-detectable=true
