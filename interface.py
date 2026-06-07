@@ -15,8 +15,58 @@ class DetectorPadroesApp(ctk.CTk):
         self.configure(fg_color=cfg.CINZA_CLARO)
 
         self.alunos = obter_alunos()
+        
+        self.bind_all("<F1>", self.abrir_manual)
         self.criar_layout()
         self.mostrar_dashboard()
+
+    def abrir_manual(self, event=None):
+        janela_manual = ctk.CTkToplevel(self)
+        janela_manual.title("Manual do Usuário (Ajuda)")
+        janela_manual.geometry("600x500")
+        janela_manual.configure(fg_color=cfg.CINZA_CLARO)
+        janela_manual.attributes("-topmost", True)
+        janela_manual.grab_set()
+
+        ctk.CTkLabel(
+            janela_manual, 
+            text="📖 Manual do Sistema", 
+            text_color=cfg.VERDE_ESCURO, 
+            font=("Arial", 22, "bold")
+        ).pack(pady=(20, 10))
+
+        texto_ajuda = """Bem-vindo ao Detector de Padrões de Aprendizado!
+
+📍 ATALHOS DE TECLADO:
+• F1: Abre esta tela de ajuda.
+
+📍 FUNCIONALIDADES:
+• Dashboard: Visão geral da turma, médias e probabilidade de aprovação.
+• Todos os Alunos: Lista completa com notas e status. Permite excluir.
+• Análise por Disciplina: Detalha o desempenho de uma matéria específica.
+• Cadastrar Aluno: Insere um novo aluno na base de dados.
+• Lançar Notas: Atualiza as notas bimestrais de um aluno existente.
+• Relatório Visual: Gráficos de barra facilitando a visualização rápida.
+
+📍 REGRAS DE AVALIAÇÃO E SITUAÇÃO:
+• Aprovado: Média final maior ou igual a 7.0
+• Atenção: Média final entre 6.0 e 6.9
+• Em Risco: Média final abaixo de 6.0
+
+O sistema utiliza a biblioteca NumPy para processar as médias ponderadas usando produtos escalares, garantindo alta performance de cálculo.
+"""
+        caixa_texto = ctk.CTkTextbox(
+            janela_manual, 
+            width=540, 
+            height=380, 
+            font=("Arial", 14), 
+            text_color=cfg.PRETO_SUAVE,
+            fg_color=cfg.BRANCO,
+            corner_radius=10
+        )
+        caixa_texto.pack(padx=20, pady=10)
+        caixa_texto.insert("0.0", texto_ajuda)
+        caixa_texto.configure(state="disabled")
 
     def criar_layout(self):
         self.menu = ctk.CTkFrame(self, width=270, fg_color=cfg.VERDE_ESCURO, corner_radius=0)
