@@ -2,4 +2,18 @@
 venv/** linguist-vendored
 env/** linguist-vendored
 ENV/** linguist-vendored
+.pytest_cache/** linguist-vendored
+__pycache__/** linguist-vendored
+
+
+*.json linguist-documentation
+*.yaml linguist-documentation
+*.yml linguist-documentation
+*.md linguist-documentation
+*.txt linguist-documentation
+*.toml linguist-documentation
+*.xml linguist-documentation
+*.html linguist-documentation
+*.TeX linguist-documentation
+
 *.py linguist-detectable=true
