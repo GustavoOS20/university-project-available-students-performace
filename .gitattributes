@@ -1,0 +1,5 @@
+.venv/** linguist-vendored
+venv/** linguist-vendored
+env/** linguist-vendored
+ENV/** linguist-vendored
+*.py linguist-detectable=true
